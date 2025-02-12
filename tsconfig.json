@@ -1,6 +1,14 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "strictNullChecks": true
-  }
+    "strictNullChecks": true,
+    "jsx": "preserve",
+    "types": ["astro/client"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/styled-system/*": ["./styled-system/*"]
+    }
+  },
+  "include": [".astro/types.d.ts", "src", "styled-system"]
 }
