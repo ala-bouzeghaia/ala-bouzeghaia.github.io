@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
+import { css } from "@/styled-system/css";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, pubDate } = Astro.props;
+---
+
+<article
+  class={css({
+    height: "100%",
+    padding: "1rem",
+    border: "1px solid",
+    borderRadius: "0.5rem",
+    display: "flex",
+    flexDirection: "column",
+    gap: "0.5rem",
+    backgroundColor: "white",
+  })}>
+  <header>
+    <p
+      class={css({
+        fontWeight: "light",
+        fontStyle: "italic",
+        fontSize: "sm",
+        color: "gray.700",
+      })}>
+      <FormattedDate date={pubDate} />
+    </p>
+    <h4>{title}</h4>
+  </header>
+  <p>{description}</p>
+</article>
