@@ -1,0 +1,29 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { css } from "@/styled-system/css";
+---
+
+<header class={css({ width: "100%" })}>
+  <nav
+    class={css({
+      borderBottom: "1px solid",
+      borderColor: "gray.300",
+    })}>
+    <div
+      class={css({
+        maxWidth: "containerWidth",
+        margin: "0 auto",
+        padding: "1rem 0",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      })}>
+      <h2 class={css({ fontWeight: "bold" })}><a href='/'>Astro</a></h2>
+      <div class={css({ display: "flex", gap: "1rem" })}>
+        <HeaderLink href='/'>Home</HeaderLink>
+        <HeaderLink href='/projects'>Projects</HeaderLink>
+        <HeaderLink href='/blog'>Blog</HeaderLink>
+      </div>
+    </div>
+  </nav>
+</header>
