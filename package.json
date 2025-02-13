@@ -2,7 +2,7 @@
   "name": "porfolio-astro",
   "type": "module",
   "version": "0.0.1",
-  "homepage": "https://ala-bouzeghaia.github.io/portfolio-astro/",
+  "homepage": "https://ala-bouzeghaia.github.io/",
   "scripts": {
     "prepare": "panda prepare",
     "dev": "astro dev",

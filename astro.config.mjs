@@ -8,8 +8,8 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://ala-bouzeghaia.github.io/portfolio-astro/",
-  base: "portfolio-astro",
+  site: "https://ala-bouzeghaia.github.io",
+  base: "/",
   integrations: [
     mdx(),
     sitemap(),
