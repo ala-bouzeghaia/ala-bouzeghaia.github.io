@@ -11,7 +11,7 @@ const { title, description, pubDate } = Astro.props;
 <article
   class={css({
     height: "100%",
-    padding: "1rem",
+    padding: "2rem",
     border: "1px solid",
     borderRadius: "0.5rem",
     display: "flex",
@@ -29,7 +29,7 @@ const { title, description, pubDate } = Astro.props;
       })}>
       <FormattedDate date={pubDate} />
     </p>
-    <h4>{title}</h4>
+    <h4 class={css({ textStyle: "heading4" })}>{title}</h4>
   </header>
-  <p>{description}</p>
+  <p class={css({ textStyle: "body" })}>{description}</p>
 </article>
