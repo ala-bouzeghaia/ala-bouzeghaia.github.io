@@ -6,6 +6,7 @@ import {
 
 const globalCss = defineGlobalStyles({
   "html, body": {
+    fontFamily: "Atkinson, sans-serif",
     // scrollbarGutter: "stable",
     // fontFamily: "body",
   },
