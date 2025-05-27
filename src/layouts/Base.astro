@@ -4,21 +4,20 @@ import BaseHead from "@/components/BaseHead.astro";
 import { css } from "@/styled-system/css";
 import Navbar from "@/components/Navbar.astro";
 import Footer from "@/components/Footer.astro";
+
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang='en'>
   <head>
-    <BaseHead
-      title={"My portfolio"}
-      description={"Portfolio created with Astro"}
-    />
+    <BaseHead title={title} description={description} />
   </head>
 
   <body
     class={css({
       color: "zinc.800",
-      backgroundColor: "amber.50",
+      backgroundColor: "#f1f0ef",
       minHeight: "100vh",
       margin: 0,
       display: "flex",

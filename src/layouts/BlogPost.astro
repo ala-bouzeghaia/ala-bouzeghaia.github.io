@@ -5,60 +5,17 @@ import FormattedDate from "@/components/FormattedDate.astro";
 import Navbar from "@/components/Navbar.astro";
 import Footer from "@/components/Footer.astro";
 
-// import "@/index.css";
 import { css } from "@/styled-system/css";
 
 type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, heroImage } = Astro.props;
-
-// const { pathname } = Astro.url;
-// const subpath = pathname.match(/[^\/]+/g);
 ---
 
 <!doctype html>
 <html lang='en'>
   <head>
     <BaseHead title={title} description={description} />
-    <!-- <style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style> -->
   </head>
 
   <body class={css({ color: "zinc.800", backgroundColor: "amber.50" })}>
@@ -74,8 +31,6 @@ const { title, description, pubDate, heroImage } = Astro.props;
             marginBottom: "1rem",
           },
         })}>
-        <!-- <div class='prose'> -->
-        <!-- <div class='title'> -->
         <header
           class={css({
             marginBottom: "5rem",
@@ -115,9 +70,6 @@ const { title, description, pubDate, heroImage } = Astro.props;
               lineHeight: "tight",
               width: "100%",
               textWrap: "nowrap",
-              //   whiteSpace: "normal",
-              //   overflowWrap: "break-word",
-              //   wordBreak: "break-word",
             })}>
             {title}
           </h1>
