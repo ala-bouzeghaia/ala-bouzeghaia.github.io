@@ -12,7 +12,7 @@ const posts = (await getCollection("blog")).sort(
 const latestPosts = posts.slice(0, 3);
 ---
 
-<Base>
+<Base title='My portfolio' description='Welcome to my portfolio!'>
   <section
     class={css({
       width: "100%",
@@ -26,22 +26,23 @@ const latestPosts = posts.slice(0, 3);
     <h3
       class={css({
         textStyle: "heading3",
-        color: "purple.500",
+        color: "purple.700",
         maxWidth: "containerWidth",
       })}>
-      Hello, Astronaut!
+      Hello!
     </h3>
     <p class={css({ textStyle: "body" })}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo
-      integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu
-      turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-      adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus
-      sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna
-      fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet
-      mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer
-      quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit
-      amet.
+      I’m Ala, a Full-Stack Software Engineer with a passion for building
+      efficient, scalable applications that solve real-world challenges. My
+      expertise lies in crafting seamless web experiences using technologies
+      like React, NodeJS, NestJS, PostgreSQL, and MongoDB. I take pride in
+      creating systems that not only function beautifully but also improve
+      workflows and business processes. <br />
+      <br />
+      My approach always incorporates collaboration—whether it’s working with cross-functional
+      teams or gathering user feedback to refine features. I’m driven by a desire
+      to create impactful tools that are not only technically sound but also make
+      life easier for the people who use them.
     </p>
   </section>
 
@@ -62,17 +63,20 @@ const latestPosts = posts.slice(0, 3);
         justifyContent: "space-between",
         width: "100%",
       })}>
-      <h3 class={css({ textStyle: "heading3", color: "purple.500" })}>Blog</h3>
-      <a
-        href='/blog/'
-        class={css({
-          fontWeight: "semibold",
-          borderBottom: "2px solid transparent",
-          _hover: {
-            borderBottom: "2px solid",
-          },
-        })}>
-        All articles
+      <h3 class={css({ textStyle: "heading3", color: "purple.700" })}>Blog</h3>
+      <a href='/blog/'>
+        <span
+          class={css({
+            fontSize: "1.125rem",
+            lineHeight: "140%",
+            fontWeight: "semibold",
+            // borderBottom: "2px solid transparent",
+            _hover: {
+              borderBottom: "2px solid",
+            },
+          })}>
+          All articles
+        </span>
       </a>
     </div>
 
@@ -121,7 +125,7 @@ const latestPosts = posts.slice(0, 3);
     <h3
       class={css({
         textStyle: "heading3",
-        color: "purple.500",
+        color: "purple.700",
         maxWidth: "containerWidth",
       })}>
       Projects
