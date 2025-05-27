@@ -40,7 +40,9 @@ const { Content } = await post.render();
         })}>
         Published on <FormattedDate date={post.data.pubDate} />
       </p>
-      <p class={css({ textStyle: "body" })}>{post.data.description}</p>
+      <p class={css({ textStyle: "body", fontSize: "1.25rem" })}>
+        {post.data.description}
+      </p>
       <hr
         class={css({
           borderColor: "neutral.400",
