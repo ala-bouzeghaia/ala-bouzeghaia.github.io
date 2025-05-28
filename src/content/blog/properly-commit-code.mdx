@@ -1,0 +1,138 @@
+---
+title: "Effective Git Commits and Meaningful Messages"
+description: "How to Properly Commit Code: Best Practices for Effective Git Commits and Meaningful Messages "
+pubDate: "Sep 26 2024"
+heroImage: "/blog-placeholder-2.jpg"
+---
+
+<br />
+<br />
+Git is one of the most important tools in a developer’s toolkit, especially when
+working in a team. It's more than just a version control system—it’s a way to
+communicate your work with others. But not all commits are created equal. Clear,
+well-structured commits can save your team time and help you avoid headaches
+during code reviews or when you need to track down a bug weeks (or months!)
+later.
+
+In this article, we’ll look at how to commit code properly, stage files correctly, and write meaningful commit messages using conventions like **Conventional Commit**. These tips will make life easier for you and anyone else who touches your code.
+
+#### 1. Make Small, Atomic Commits
+
+When you're deep in coding mode, it can be tempting to finish a feature or bug fix and commit everything all at once. But large commits that change multiple things at once can be hard to understand and even harder to review. To make your commits easier for others to follow, keep them **small and focused**.
+
+##### **Why is this important?**
+
+- **Easier to Understand**: Small, atomic commits are easier for others (or even future you) to understand. A commit should represent one logical change. Whether it’s fixing a bug, refactoring a function, or adding a new feature, try to make sure each commit does just one thing.
+- **Simplifies Rollbacks**: If a bug sneaks into the codebase, atomic commits make it easier to roll back just the problematic change without affecting other work.
+- **Streamlines Code Reviews**: Reviewing small, focused commits is way less stressful than reviewing a massive, all-encompassing commit. Reviewers can follow your thought process and focus on the specific change.
+
+##### **Practical Tips:**
+
+- **Commit per logical change**: For instance, if you're implementing a new feature, break it into parts: one commit for the backend logic, one for the database schema update, and another for the frontend interface.
+
+```bash
+# Instead of doing this:
+git commit -m "Fix bugs and add new user profile feature"
+
+# You could break it down into meaningful, smaller commits:
+git commit -m "fix: resolve error handling in login form"
+git commit -m "feat: implement user profile editing"
+```
+
+This structure gives everyone reading the history a clear view of what was changed and why, which makes life easier for reviewers and your future self when you’re looking back through the project.
+
+#### 2. Stage Only Relevant Files
+
+Have you ever accidentally committed a debug log or unrelated changes because you staged everything without thinking? Don’t worry, it happens! But it's a good habit to stage only the files relevant to your current change. Unnecessary files clutter your commit history and make code reviews harder.
+
+Before committing, take a minute to review what you’re about to stage. You can do this by running:
+
+```bash
+git status
+```
+
+Then, stage only the files related to the change you're committing. If needed, you can even stage parts of files using `git add -p`, which lets you pick and choose specific changes line by line.
+
+```bash
+git add -p app.js
+```
+
+This command will interactively prompt you to include only the changes you want in your next commit. It’s an extra step, but it ensures your commits are clean and focused on one thing.
+
+#### 3. Write Meaningful Commit Messages
+
+Writing a good commit message might seem like a small thing, but it can make a big difference—especially for anyone who has to read your commit history. A commit message should give others a clear idea of what was changed and why. It’s not just for today’s code review but also for months from now when someone (maybe you) needs to understand the context of the change.
+
+**What Makes a Good Commit Message?**
+
+A solid commit message typically includes:
+
+1. A concise summary: This is a one-liner that explains the "what" (keep it under 50 characters if possible).
+2. An optional body: For non-trivial commits, the body can explain the "why" or give more context. This is especially helpful for changes that aren't immediately obvious.
+
+**Follow the Conventional Commit Standard**
+
+One of the best practices for writing commit messages is to follow a convention like Conventional Commit. This standard helps structure your messages so they’re clear and easy to parse. Here's the format:
+
+```bash
+<type>(optional scope): <description>
+<BLANK LINE>
+[optional body]
+```
+
+- type: The type of change (feat, fix, docs, etc.).
+- scope: Optional, to specify what part of the code the change affects.
+- description: A short, imperative summary of what was changed.
+- body: An optional, more detailed explanation.
+
+Example:
+
+```bash
+git commit -m "feat(user): add profile update feature"
+```
+
+This message tells you at a glance that a new feature has been added to the user module. For more detail, you can add a body:
+
+```bash
+feat(user): add profile update feature
+Allows users to update their name, email, and profile picture.
+```
+
+Now, even if someone wasn’t involved in this feature, they’ll immediately understand what’s been added and why.
+
+#### 4. Keep Commits and Code Reviews Simple
+
+When you break your work into small, focused commits, you’re not only making the commit history easier to read but also simplifying code reviews for your teammates. No one wants to review a massive commit with hundreds of changes. It’s overwhelming and easy to miss bugs or unintended side effects. By keeping your commits focused and logical, you’ll make the review process faster, more efficient, and less stressful.
+
+{/* Here’s how to keep things simple: */}
+
+**Commit Early, Commit Often:**<br/>
+
+Don’t wait until the entire feature is done to start committing. Committing smaller chunks more frequently helps keep your work organized and makes the review process more digestible.
+
+**Group Related Changes:**<br/>
+
+Let’s say you’re working on a new feature that involves both frontend and backend changes. Instead of bundling everything into one commit, try to group related changes together. This helps reviewers focus on one part of the system at a time, without being distracted by unrelated changes.<br/>
+For instance, if you're building a new login feature, split the changes into commits like this:
+
+```bash
+git commit -m "feat(auth): add login form validation"
+git commit -m "feat(auth): connect login form to backend"
+git commit -m "chore(auth): remove debug logs"
+```
+
+Now each commit is focused on one part of the feature, making it easier to review and test.
+
+**Automate Code Formatting**<br/>
+
+Tools like Prettier and ESLint can automatically enforce consistent formatting in your code. This takes care of things like indentation and line breaks, so you and your team can focus on logic during code reviews instead of wasting time fixing style issues.
+
+Finally, try to keep pull requests small and focused as well. A PR with a thousand lines of changes is tough to review. Instead, aim for smaller, more manageable pull requests so that your teammates can review your work efficiently.
+
+#### Conclusion
+
+Writing good commits isn’t just about using Git—it’s about being a good teammate. Small, focused commits, clear and meaningful messages, and staging only the relevant files make your code easier to understand, review, and maintain.
+
+By following these best practices, you’ll contribute to a cleaner codebase and improve collaboration within your team. And as you grow as a software engineer, these habits will become second nature, making both your code and your career path smoother.
+
+Remember: clean, well-structured commits are a form of communication that shows respect for your future self and your teammates.
