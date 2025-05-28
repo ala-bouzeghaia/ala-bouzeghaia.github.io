@@ -1,0 +1,9 @@
+{
+    "name": "Pathfinding Visualizer",
+    "description": "A web-based tool to visualize various pathfinding algorithms like A*, Dijkstra's, and more. Users can interactively set start and end points, add obstacles, and see how different algorithms find the shortest path.",
+    "links": {
+        "website": "https://ala-bouzeghaia.github.io/pathfinding-visualizer/",
+        "github": "https://github.com/ala-bouzeghaia/pathfinding-visualizer"
+    },
+    "date": "2025-05-28"
+}
