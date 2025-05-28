@@ -30,6 +30,7 @@ const posts = allPosts.sort(
     <ul
       class={css({
         display: "flex",
+        flexDirection: { base: "column", md: "row" },
         flexWrap: "wrap",
         gap: "1rem",
         "& > li": {
