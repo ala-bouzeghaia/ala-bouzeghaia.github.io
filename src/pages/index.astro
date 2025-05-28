@@ -4,12 +4,19 @@ import Base from "@/layouts/Base.astro";
 import ArticleCard from "@/components/ArticleCard.astro";
 
 import { css } from "styled-system/css";
+import ProjectCard from "@/components/ProjectCard.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
     b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 ) as CollectionEntry<"blog">[];
 const latestPosts = posts.slice(0, 3);
+
+const projects = (await getCollection("projects")).sort(
+  (a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) =>
+    b.data.date.valueOf() - a.data.date.valueOf()
+) as CollectionEntry<"projects">[];
+const latestProjects = projects.slice(0, 3);
 ---
 
 <Base title='My portfolio' description='Welcome to my portfolio!'>
@@ -70,7 +77,6 @@ const latestPosts = posts.slice(0, 3);
             fontSize: "1.125rem",
             lineHeight: "140%",
             fontWeight: "semibold",
-            // borderBottom: "2px solid transparent",
             _hover: {
               borderBottom: "2px solid",
             },
@@ -122,25 +128,64 @@ const latestPosts = posts.slice(0, 3);
       gap: "1rem",
       padding: "1rem",
     })}>
-    <h3
+    <div
       class={css({
-        textStyle: "heading3",
-        color: "purple.700",
-        maxWidth: "containerWidth",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        width: "100%",
       })}>
-      Projects
-    </h3>
-    <p class={css({ textStyle: "body" })}>
-      Morbi tristique senectus et netus. Id semper risus in hendrerit gravida
-      rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis
-      purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae
-      congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-      porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt
-      lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer
-      feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue
-      quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum.
-      Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et
-      pharetra pharetra massa massa ultricies mi.
-    </p>
+      <h3
+        class={css({
+          textStyle: "heading3",
+          color: "purple.700",
+          maxWidth: "containerWidth",
+        })}>
+        Projects
+      </h3>
+      <a href='/projects/'>
+        <span
+          class={css({
+            fontSize: "1.125rem",
+            lineHeight: "140%",
+            fontWeight: "semibold",
+            _hover: {
+              borderBottom: "2px solid",
+            },
+          })}>
+          All projects
+        </span>
+      </a>
+    </div>
+
+    <ul
+      class={css({
+        display: "flex",
+        flexDirection: { base: "column", md: "row" },
+        flexWrap: "wrap",
+        gap: "1rem",
+        "& > li": {
+          flex: "1 1 calc(33.333% - 1rem)",
+          minWidth: "calc(33.333% - 1rem)",
+          height: "auto",
+          _hover: {
+            boxShadow: "cardShadow",
+            borderRadius: "0.5rem",
+          },
+        },
+      })}>
+      {
+        latestProjects.map((entry) => (
+          <li>
+            <ProjectCard
+              name={entry.data.name}
+              description={entry.data.description}
+              links={entry.data.links}
+              date={entry.data.date}
+            />
+          </li>
+        ))
+      }
+    </ul>
   </section>
 </Base>

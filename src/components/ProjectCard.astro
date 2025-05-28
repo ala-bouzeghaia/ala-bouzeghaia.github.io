@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { css } from "@/styled-system/css";
+
+type Props = CollectionEntry<"projects">["data"];
+
+const { name, description, links } = Astro.props;
+
+const footerLinkStyle = css({
+  display: "inline-block",
+  textStyle: "body",
+  fontWeight: "bold",
+  backgroundColor: "neutral.900",
+  borderRadius: "sm",
+  color: "neutral.100",
+  textAlign: "center",
+  px: "4",
+  py: "2",
+  _hover: {
+    cursor: "pointer",
+    backgroundColor: "neutral.800",
+  },
+});
+---
+
+<article
+  class={css({
+    height: "100%",
+    padding: "2rem",
+    border: "1px solid",
+    borderColor: "gray.300",
+    borderRadius: "0.5rem",
+    display: "flex",
+    flexDirection: "column",
+    gap: "1rem",
+    backgroundColor: "white",
+  })}>
+  <header>
+    <h4 class={css({ textStyle: "heading4" })}>{name}</h4>
+  </header>
+  <p class={css({ textStyle: "body" })}>{description}</p>
+  <footer class={css({ display: "flex", gap: "1rem" })}>
+    {
+      links.website && (
+        <a href={links.website} target='_blank' class={footerLinkStyle}>
+          Website
+        </a>
+      )
+    }
+    <a href={links.github} target='_blank' class={footerLinkStyle}>Github</a>
+  </footer>
+</article>
