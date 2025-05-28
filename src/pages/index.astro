@@ -1,7 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 import Base from "@/layouts/Base.astro";
-import Card from "@/components/Card.astro";
+import ArticleCard from "@/components/ArticleCard.astro";
 
 import { css } from "styled-system/css";
 
@@ -100,7 +100,7 @@ const latestPosts = posts.slice(0, 3);
         latestPosts.map((post) => (
           <li>
             <a href={`/blog/${post.slug}/`}>
-              <Card
+              <ArticleCard
                 title={post.data.title}
                 description={post.data.description}
                 pubDate={post.data.pubDate}
