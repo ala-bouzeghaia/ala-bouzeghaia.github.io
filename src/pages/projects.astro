@@ -1,9 +1,62 @@
 ---
+import { getCollection, type CollectionEntry } from "astro:content";
 import Base from "@/layouts/Base.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+
 import { css } from "@/styled-system/css";
+
+const allProjects = (await getCollection(
+  "projects"
+)) as CollectionEntry<"projects">[];
+const projects = allProjects.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 ---
 
 <Base>
-  <h3 class={css({ color: "purple.700" })}>Projects</h3>
-  <p>Here are some of the projects I've worked on.</p>
+  <section
+    class={css({
+      width: "100%",
+      maxWidth: "containerWidth",
+      margin: "0 auto",
+      padding: "1rem",
+      paddingBottom: "5rem",
+      display: "flex",
+      flexDirection: "column",
+      gap: "3rem",
+    })}>
+    <h3 class={css({ textStyle: "heading3", color: "purple.700" })}>
+      Projects
+    </h3>
+
+    <ul
+      class={css({
+        display: "flex",
+        flexDirection: { base: "column", md: "row" },
+        flexWrap: "wrap",
+        gap: "1rem",
+        "& > li": {
+          flex: "1 1 calc(50% - 1rem)",
+          minWidth: "calc(50% - 1rem)",
+          height: "auto",
+          _hover: {
+            boxShadow: "cardShadow",
+            borderRadius: "0.5rem",
+          },
+        },
+      })}>
+      {
+        projects.map((entry) => (
+          <li>
+            <ProjectCard
+              name={entry.data.name}
+              description={entry.data.description}
+              links={entry.data.links}
+              date={entry.data.date}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </Base>
